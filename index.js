@@ -8,6 +8,7 @@ app.use(cors());
 
 
 const categories = require("./data/category.json")
+const courses = require("./data/courses.json");
 
 
 app.get("/",(req,res)=>{
@@ -16,6 +17,20 @@ app.get("/",(req,res)=>{
 
 app.get("/course-categories",(req,res)=>{
     res.send(categories)
+})
+
+app.get('/courses/:id',(req,res)=>{
+    // const id = req.params.id;
+    // console.log(id)
+    // const selectedCourse = courses.find(course => course._id === id);
+    // res.send(selectedCourse)
+    res.send(categories)
+})
+
+app.get("/category/:id", (req,res)=>{
+    const id = req.params.id;
+    const categoryCourses = courses.filter(cate =>cate.category_id === id);
+    res.send(categoryCourses)
 })
 
 app.listen(port,()=>{

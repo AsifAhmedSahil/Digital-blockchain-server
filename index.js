@@ -20,11 +20,18 @@ app.get("/course-categories",(req,res)=>{
 })
 
 app.get('/courses/:id',(req,res)=>{
-    // const id = req.params.id;
-    // console.log(id)
-    // const selectedCourse = courses.find(course => course._id === id);
-    // res.send(selectedCourse)
-    res.send(categories)
+    const id = req.params.id;
+    console.log(id)
+    const selectedCourse = courses.find(course => course.category_id === id);
+    res.send(selectedCourse)
+    // res.send(categories)
+})
+app.get('/checkout/:id',(req,res)=>{
+    const id = req.params.id;
+    console.log(id)
+    const selectedCourse = courses.find(course => course._id === id);
+    res.send(selectedCourse)
+    // res.send(categories)
 })
 
 app.get("/category/:id", (req,res)=>{
